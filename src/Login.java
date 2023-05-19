@@ -5,7 +5,7 @@
 
 /**
  *
- * @author muham
+ * @author muham rafly
  */
 public class Login extends javax.swing.JFrame {
 
@@ -140,7 +140,7 @@ public class Login extends javax.swing.JFrame {
         TampilanBelanja tj = new TampilanBelanja();
         tj.setVisible(true);
         this.dispose();
-
+        //
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
