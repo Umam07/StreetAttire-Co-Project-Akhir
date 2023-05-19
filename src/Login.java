@@ -15,6 +15,8 @@ public class Login extends javax.swing.JFrame {
     public static String ramfly;
     public Login() {
         initComponents();
+        
+        String halo = "coba aja";
     }
 
     /**
