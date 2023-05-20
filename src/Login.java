@@ -1,3 +1,10 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -12,12 +19,12 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public static String ramfly;
+    public Statement st;
+    public ResultSet rs;
+    Connection cn = koneksiDatabase.BukaKoneksi();
     public Login() {
         initComponents();
-        
-        
-        String coba = "Mau coba";
+       
     }
 
     /**
@@ -111,17 +118,17 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(324, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(513, Short.MAX_VALUE))
+                .addGap(316, 316, 316))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,10 +148,38 @@ public class Login extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        TampilanBelanja tj = new TampilanBelanja();
-        tj.setVisible(true);
-        this.dispose();
-        //
+        
+        if (!jTextField1.getText().isEmpty() && !jPasswordField1.getText().isEmpty()) {
+            try {
+            String query = "SELECT * FROM data WHERE username = ? AND password = ?";
+            PreparedStatement ps = cn.prepareStatement(query);
+            ps.setString(1, jTextField1.getText());
+            ps.setString(2, jPasswordField1.getText());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Halo, " + jTextField1.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+                TampilanBelanja tj = new TampilanBelanja();
+                tj.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Pastikan username dan password sudah benar.", "Login", JOptionPane.ERROR_MESSAGE);
+            }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }else if (jTextField1.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Username belum diisi", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+
+        }else if(jPasswordField1.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Password belum diisi", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+
+        }else {
+            JOptionPane.showMessageDialog(null, "Isi data mu!", "Warning", JOptionPane.ERROR_MESSAGE);
+
+        }
+        
+        
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**

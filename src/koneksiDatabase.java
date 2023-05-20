@@ -14,7 +14,7 @@ public class koneksiDatabase {
     public static Connection BukaKoneksi() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/NAMA_DATABSE", "root", "");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sreet_attire_co", "root", "");
             return cn;
         } catch (Exception e) {
         JOptionPane.showMessageDialog(null,e );           

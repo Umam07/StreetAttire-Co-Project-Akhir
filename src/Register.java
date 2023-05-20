@@ -209,7 +209,7 @@ public class Register extends javax.swing.JFrame {
                     Login lg = new Login();
                     String insert = "insert into data values ('" + username + "', '" + password + "')";
                     st.executeUpdate(insert);
-                    JOptionPane.showMessageDialog(null, "Berhasil Registrasi", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Berhasil Registrasi", "Informasi", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
                     lg.setVisible(true);
                     this.dispose();
