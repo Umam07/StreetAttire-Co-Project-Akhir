@@ -16,7 +16,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
-        String halo = "coba aja";
+        
         String coba = "Mau coba";
     }
 
