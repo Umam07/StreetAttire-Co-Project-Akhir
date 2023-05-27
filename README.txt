@@ -1,4 +1,4 @@
-# StreetAttire-Co-Project-Akhir
+# ProjectAkhir_KosbuTeach
 Program ini dibuat oleh 3 orang pemuda yang berkuliah di Universitas Yarsi.
 File ini menjelaskan kelengkapan berkas proyek akhir kami yang berjudul Aplikasi Online Shop. 
 
